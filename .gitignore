@@ -1,0 +1,40 @@
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# --- Windows ---
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Editors / IDEs ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# --- Claude Code local config ---
+.claude/
+
+# --- Environment / secrets ---
+.env
+.env.*
+*.local
+
+# --- Logs & temp ---
+*.log
+*.tmp
+tmp/
+scratchpad/
+
+# --- Dependencies (in case tooling is ever added) ---
+node_modules/

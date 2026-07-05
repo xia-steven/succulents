@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Succulent Care — Indoor Collection</title>
+<style>
+  :root{
+    --bg:#f4f2ec;
+    --bg-2:#ece9e0;
+    --card:#fbfaf6;
+    --ink:#2c342d;
+    --muted:#7a857a;
+    --line:rgba(44,52,45,.10);
+    --accent:#6f8f6a;
+    --accent-deep:#4e6b4a;
+    --chip:#eef1e9;
+    --chip-ink:#556b52;
+    --shadow:0 1px 2px rgba(44,52,45,.06),0 8px 24px rgba(44,52,45,.08);
+    --shadow-lg:0 20px 60px rgba(30,40,30,.28);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171b18;--bg-2:#12150f;--card:#20251f;--ink:#e7ebe3;--muted:#9aa596;
+      --line:rgba(231,235,227,.10);--accent:#8fb184;--accent-deep:#a9c99e;
+      --chip:#283026;--chip-ink:#a9c19e;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+      --shadow-lg:0 24px 70px rgba(0,0,0,.6);
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:radial-gradient(1200px 600px at 50% -10%,var(--bg-2),var(--bg));
+    background-attachment:fixed;
+    color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.55;
+    padding:0 12px 80px;
+  }
+  .wrap{max-width:1400px;margin:0 auto}
+
+  header{padding:64px 0 26px;text-align:center}
+  header .eyebrow{
+    font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:14px;
+  }
+  header h1{
+    font-family:var(--serif);font-weight:500;font-size:clamp(38px,7vw,64px);
+    margin:0;letter-spacing:-.01em;line-height:1.02;
+  }
+  header p.sub{
+    color:var(--muted);max-width:560px;margin:16px auto 0;font-size:15.5px;
+  }
+  .conditions{
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px auto 0;
+    max-width:760px;
+  }
+  .cond{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--card);border:1px solid var(--line);
+    padding:7px 13px;border-radius:999px;font-size:12.5px;color:var(--ink);
+    box-shadow:var(--shadow);
+  }
+  .cond svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:1.7;flex:none}
+
+  .toolbar{
+    display:flex;align-items:flex-end;gap:18px 22px;margin:52px 0 30px;flex-wrap:wrap;
+  }
+  .facets{display:flex;align-items:flex-end;gap:16px 18px;flex-wrap:wrap;flex:1 1 auto}
+  .facet{display:flex;flex-direction:column;gap:8px}
+  .facet-label{
+    font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--muted);font-weight:700;padding-left:3px;
+  }
+  .facet-btns{display:flex;gap:7px;flex-wrap:wrap}
+  .allbtn{align-self:flex-end}
+  .facet-sep{width:1px;align-self:stretch;background:var(--line);margin:0 2px}
+  .tb-search{margin-left:auto;align-self:flex-end}
+  .tb-search .field{
+    position:relative;display:inline-flex;align-items:center;width:230px;max-width:100%;
+  }
+  .tb-search svg{
+    position:absolute;left:14px;width:16px;height:16px;stroke:var(--muted);
+    fill:none;stroke-width:1.8;pointer-events:none;
+  }
+  .tb-search input{
+    font:inherit;font-size:14px;width:100%;
+    background:var(--card);border:1px solid var(--line);color:var(--ink);
+    padding:10px 16px 10px 40px;border-radius:999px;outline:none;transition:.18s;
+  }
+  .tb-search input::placeholder{color:var(--muted)}
+  .tb-search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(111,143,106,.18)}
+  .empty{text-align:center;color:var(--muted);padding:60px 0;font-size:15px}
+  .filter{
+    font:inherit;font-size:13.5px;cursor:pointer;
+    background:transparent;border:1px solid var(--line);color:var(--muted);
+    padding:8px 16px;border-radius:999px;transition:.18s;
+  }
+  .filter:hover{color:var(--ink);border-color:var(--accent)}
+  .filter[aria-pressed="true"]{
+    background:var(--accent);border-color:var(--accent);color:#fff;
+  }
+  @media (prefers-color-scheme: dark){.filter[aria-pressed="true"]{color:#151a13}}
+
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:20px;
+  }
+  .card{
+    position:relative;border:0;padding:0;cursor:pointer;text-align:left;
+    background:var(--card);border-radius:18px;overflow:hidden;
+    box-shadow:var(--shadow);transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s;
+    font:inherit;color:inherit;
+  }
+  .card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:var(--shadow-lg);outline:none}
+  .card:focus-visible{box-shadow:0 0 0 2px var(--accent),var(--shadow-lg)}
+  .card .imgwrap{display:block;position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg-2)}
+  .card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .card:hover img{transform:scale(1.05)}
+  .card .veil{
+    position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(15,22,16,.82) 0%,rgba(15,22,16,.35) 32%,rgba(15,22,16,0) 60%);
+  }
+  .card .label{position:absolute;left:16px;right:16px;bottom:15px;color:#fff}
+  .card .latin{display:block;font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.18;letter-spacing:.2px}
+  .card .common{display:block;font-size:12px;opacity:.82;margin-top:3px;letter-spacing:.02em}
+  .tag{
+    position:absolute;top:12px;left:12px;z-index:2;
+    background:rgba(255,255,255,.9);color:#41563e;
+    font-size:10.5px;font-weight:600;letter-spacing:.04em;
+    padding:5px 10px;border-radius:999px;backdrop-filter:blur(6px);
+  }
+
+  /* ---- overlay ---- */
+  .overlay{
+    position:fixed;inset:0;z-index:50;display:none;
+    align-items:flex-start;justify-content:center;
+    padding:40px 18px;overflow:auto;
+    background:rgba(20,28,20,.5);backdrop-filter:blur(6px);
+  }
+  .overlay.open{display:flex;animation:fade .22s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .sheet{
+    width:100%;max-width:660px;background:var(--card);border-radius:24px;
+    overflow:hidden;box-shadow:var(--shadow-lg);animation:rise .28s cubic-bezier(.2,.7,.3,1);
+  }
+  @keyframes rise{from{transform:translateY(18px);opacity:.6}to{transform:none;opacity:1}}
+  .hero{position:relative;aspect-ratio:16/10;background:var(--bg-2)}
+  .hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,22,16,.85),rgba(15,22,16,.1) 55%,rgba(15,22,16,.15))}
+  .hero .htext{position:absolute;left:26px;right:80px;bottom:20px;color:#fff}
+  .hero h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(24px,5vw,34px);margin:0;line-height:1.1}
+  .hero .hcommon{font-size:14px;opacity:.9;margin-top:5px}
+  .close{
+    position:absolute;top:16px;right:16px;z-index:3;width:38px;height:38px;
+    border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.92);
+    color:#2c342d;font-size:20px;line-height:1;display:grid;place-items:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);transition:.15s}
+  .close:hover{transform:scale(1.06)}
+  .body{padding:22px 26px 30px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+  .chip{
+    background:var(--chip);color:var(--chip-ink);font-size:12px;font-weight:600;
+    padding:5px 11px;border-radius:999px;letter-spacing:.02em;
+  }
+  .care{list-style:none;margin:0;padding:0}
+  .care li{display:flex;gap:15px;padding:16px 0;border-top:1px solid var(--line)}
+  .care li:first-child{border-top:0;padding-top:2px}
+  .ico{flex:none;width:34px;height:34px;border-radius:10px;background:var(--chip);
+    display:grid;place-items:center;margin-top:1px}
+  .ico svg{width:18px;height:18px;stroke:var(--accent-deep);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .care .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-deep);font-weight:700;margin-bottom:3px}
+  .care .v{font-size:14.5px;color:var(--ink)}
+  .care .v.warn{color:var(--ink)}
+  .attrib{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+
+  footer{max-width:1120px;margin:60px auto 0;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.7}
+  footer a{color:var(--accent-deep)}
+  .no-scroll{overflow:hidden}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="toolbar">
+    <div class="facets" id="facets" aria-label="Filters"></div>
+    <div class="tb-search">
+      <span class="field">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4" stroke-linecap="round"/></svg>
+        <input id="search" type="search" placeholder="Search plants…" autocomplete="off" aria-label="Search plants">
+      </span>
+    </div>
+  </div>
+
+  <main class="grid" id="grid"></main>
+
+  <footer>
+    <p>Care notes assume <strong>Bonsai Jack 1:1:1 Gritty Mix</strong>, LED grow lights, good airflow, a steady <strong>68–73&nbsp;°F</strong> and <strong>30–50% humidity</strong> year-round. They’re a starting point — always read the plant, not the calendar.</p>
+  </footer>
+</div>
+
+<!-- icon defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="i-sun"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></g>
+  <g id="i-water"><path d="M12 3.2c3.2 4 5.6 6.9 5.6 10a5.6 5.6 0 0 1-11.2 0c0-3.1 2.4-6 5.6-10z"/></g>
+  <g id="i-moon"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.3 6.3 0 0 0 10.5 10.5z"/></g>
+  <g id="i-soil"><path d="M3 18.5h18"/><path d="M6.5 18.5l4-8 3.5 5 1.8-2.6 2.7 5.6"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="14" cy="6" r="1"/><circle cx="17.5" cy="9" r="1"/></g>
+  <g id="i-leaf"><path d="M5 19c-1-8 5-14 14-14 1 9-5 14-14 14z"/><path d="M5 19c3-5 6-8 10-10.5"/></g>
+  <g id="i-alert"><path d="M12 3.8 21 19.5H3z"/><path d="M12 10v4"/><circle cx="12" cy="16.8" r=".3"/></g>
+  <g id="i-jar"><path d="M6 3h12M7 3l1.2 4.5a5 5 0 0 0 .3 1L6.4 20.5A1.2 1.2 0 0 0 7.6 22h8.8a1.2 1.2 0 0 0 1.2-1.5l-2.1-12a5 5 0 0 0 .3-1L17 3"/></g>
+  <g id="i-bulb"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></g>
+  <g id="i-wind"><path d="M3 9h11a2.5 2.5 0 1 0-2.5-2.5M3 14h15a2.5 2.5 0 1 1-2.5 2.5M3 12h8"/></g>
+  <g id="i-thermo"><path d="M14 14.8V5a2 2 0 1 0-4 0v9.8a4 4 0 1 0 4 0z"/></g>
+</defs></svg>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-name">
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script>
+const PLANTS = [
+  {
+    id:"othonna-herrei", latin:"Othonna herrei", common:"Green Fingers",
+    family:"Asteraceae", habit:"Caudex", season:"winter", chip:"Winter grower",
+    attribution:"leandra-k_89 — CC BY-SA (iNaturalist)",
+    care:{
+      light:"Bright light, 10–12 h. Strong light keeps the warty finger-stems compact and near-black. Happy fairly close to the LEDs while in growth; back it off during its summer rest.",
+      water:"Water freely through autumn–spring while it’s in leaf — drench, then let the mix go bone-dry (roughly every 5–8 days). As days lengthen and leaves drop, cut water sharply.",
+      dormancy:"Summer-dormant. Leaves yellow and drop, leaving the bare knobbly caudex. Your steady warmth won’t override this internal clock — keep it dry, shaded and airy through the rest, then resume watering when new leaves push in autumn.",
+      soil:"Bonsai Jack gritty is ideal — caudex rot is the main risk, so the fast drainage is exactly what it wants.",
+      feeding:"Weak (¼-strength) feed once a month during winter growth only.",
+      tips:"Never water a leafless, dormant plant on a schedule. Lift the caudex a little higher at each repot for display. Watch for aphids and mealybugs on soft new growth."
+    }
+  },
+  {
+    id:"crassula-umbella", latin:"Crassula umbella", common:"Wine Cup",
+    family:"Crassulaceae", habit:"Caudex", season:"winter", chip:"Winter grower",
+    attribution:"Alex Rebelo — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Bright, strong grow light. Enough light keeps the cupped ‘wine-glass’ leaves tightly cupped around the flower stem rather than flat and stretched.",
+      water:"Winter grower — water autumn through spring while actively growing (drench, then fully dry, about weekly). Ease right off through summer.",
+      dormancy:"Summer-dormant. Often dies back to its small caudex and roots in the heat, then re-sprouts in cooler months. Keep it nearly dry while resting.",
+      soil:"Gritty mix — sharp drainage is essential for the little caudex.",
+      feeding:"Light monthly feed during active growth.",
+      tips:"Short-lived by nature — let it flower and self-seed to keep the line going. Watch for rot at the base if it’s kept wet while resting."
+    }
+  },
+  {
+    id:"euphorbia-poissonii", latin:"Euphorbia poissonii", common:"Poison Euphorbia",
+    family:"Euphorbiaceae", habit:"Succulent shrub", season:"summer", chip:"Summer grower",
+    attribution:"Babajide Agboola — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Very bright light and a long photoperiod — this is a full-sun West African species and it loves all the light you can give.",
+      water:"Warm-season grower. Drench then dry, roughly every 7–10 days spring–autumn while in leaf. Reduce as it drops leaves in the cool, short-day season.",
+      dormancy:"Facultatively deciduous. Sheds its crown of leaves and idles when light and warmth drop; in your steady warmth it may stay partly in leaf — follow the plant and water less whenever it’s bare.",
+      soil:"Gritty mix, fast drainage.",
+      feeding:"Monthly dilute feed during active growth.",
+      tips:"⚠ Handle with care — the milky latex is highly toxic and a severe skin/eye irritant. Wear gloves when pruning and keep it away from pets and children."
+    }
+  },
+  {
+    id:"stephania-erecta", latin:"Stephania erecta", common:"Round-leaf Stephania",
+    family:"Menispermaceae", habit:"Caudex", season:"summer", chip:"Summer grower",
+    attribution:"dechaphaetkrathok — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Bright indirect light or a grow light for the climbing vine and its round, parasol-like peltate leaves. Give the vine something to twine up.",
+      water:"Only start watering once the vine has actually sprouted. In growth keep the mix on the moist-to-dry side — drench, then let the top dry, about weekly. Do not water the bare tuber before it wakes: that’s the classic way to rot one.",
+      dormancy:"Strongly winter-dormant. The whole vine yellows and dies back to the bare caudex and it can rest for months. Stop watering entirely and keep the dry tuber warm; new shoots appear in spring or early summer when it’s ready.",
+      soil:"Gritty mix — sit the tuber ON the surface, roots down. Burying the caudex invites rot.",
+      feeding:"Light feed while in full leaf.",
+      tips:"Patience: a fresh tuber can take weeks to months to break. Keep it bone-dry until you see a shoot."
+    }
+  },
+  {
+    id:"gerrardanthus-macrorhizus", latin:"Gerrardanthus macrorhizus", common:"Bushman’s Grape",
+    family:"Cucurbitaceae", habit:"Caudex", season:"summer", chip:"Summer grower",
+    attribution:"Mahomed Desai — CC BY (iNaturalist)",
+    care:{
+      light:"Bright light, with a trellis for the vine. More light means a fatter caudex and shorter spacing between leaves.",
+      water:"Warm-season grower. Water regularly while it’s vining (drench, then dry the top, roughly every 5–8 days). Taper off as it slows in autumn.",
+      dormancy:"Winter-dormant — the vine dies back. Keep the big storage caudex nearly dry and just watch it, then resume watering when it re-sprouts.",
+      soil:"Gritty mix; keep part of the caudex exposed above the line for display and to keep it dry.",
+      feeding:"Monthly dilute feed during active growth.",
+      tips:"A fast, vigorous climber — cut it back to shape. The large storage root makes it very drought-tough, so err on the dry side."
+    }
+  },
+  {
+    id:"edithcolea-grandis", latin:"Edithcolea grandis", common:"Persian Carpet Flower",
+    family:"Apocynaceae", habit:"Stem succulent", season:"summer", chip:"Warm grower",
+    attribution:"Roberto Sindaco — CC BY-NC-SA (iNaturalist)",
+    care:{
+      light:"Bright but slightly filtered strong light — sudden intense LED can scorch the soft angular stems. It loves warmth and light together.",
+      water:"The delicate one — notoriously rot-prone. Water sparingly: a full drench only once the mix is completely dry and the stems are firm, roughly every 10–14 days in warm growth. Much less in winter; nearly dry when cool.",
+      dormancy:"Warmth-loving; rests through the cool, short-day months. It despises cold, wet feet — your warm, airy room suits it well, but keep it on the dry side all year.",
+      soil:"Extra-gritty, ultra-fast drainage — top-dress with more pumice if you can.",
+      feeding:"Very light, once or twice in summer only.",
+      tips:"Can collapse fast if it rots — airflow is your ally. The huge starfish flower is spectacular but smells of carrion (it’s fly-pollinated). Established rooted cuttings are far easier than seedlings."
+    }
+  },
+  {
+    id:"mammillaria-compressa-yokan", latin:"Mammillaria compressa cv. ‘Yokan’", common:"Yokan Pincushion",
+    family:"Cactaceae", habit:"Cactus", season:"summer", chip:"Summer grower",
+    attribution:"Ricardo Arredondo T. — CC BY-NC (iNaturalist) · species shown",
+    care:{
+      light:"Full, strong light and a long photoperiod for tight bodies and good spination.",
+      water:"Warm-season grower. Drench then fully dry, roughly every 7–12 days spring–autumn. Keep dry through winter.",
+      dormancy:"A cool, dry winter rest — cut water and let it slow. Cacti need that dryish rest to set flowers; a shorter winter photoperiod helps cue it.",
+      soil:"Gritty mix — perfect for cactus roots.",
+      feeding:"Low-nitrogen cactus feed once or twice in summer.",
+      tips:"‘Yokan’ is a selected form — keep light high to hold its form. It offsets into big clumps and rings itself with pink flowers in spring."
+    }
+  },
+  {
+    id:"mammillaria-duwei", latin:"Mammillaria duwei", common:"Golden-spine Pincushion",
+    family:"Cactaceae", habit:"Cactus", season:"summer", chip:"Summer grower",
+    attribution:"Monitoreo Mesita Conanp — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Bright, strong light; the soft golden hooked spines and lemon flowers colour up well under good light.",
+      water:"Drench then dry, about weekly in warm growth; a dry winter rest.",
+      dormancy:"Keep cool and dry in winter to encourage blooms. It’s a small, slightly soft-bodied species — don’t let it sit wet.",
+      soil:"Gritty mix.",
+      feeding:"Light cactus feed once or twice in summer.",
+      tips:"Err on the dry side given the soft body. Charming lemon-yellow flowers and fine hooked central spines."
+    }
+  },
+  {
+    id:"albuca-concordiana", latin:"Albuca concordiana", common:"Spiral Grass",
+    family:"Asparagaceae", habit:"Bulb", season:"winter", chip:"Winter grower",
+    attribution:"Mish — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Very bright light to keep the leaves tightly coiled — low light gives loose, floppy spirals.",
+      water:"Winter-growing bulb. Water autumn–spring while in leaf (drench, let the top dry, about weekly). Stop watering as the leaves yellow for summer.",
+      dormancy:"Summer-dormant. Foliage dies back to the bulb; keep it completely dry and cool-shaded through summer, then restart watering when new spirals emerge in autumn.",
+      soil:"Gritty mix; keep the neck of the bulb at or just above the surface.",
+      feeding:"Weak bulb or balanced feed a couple of times during winter growth.",
+      tips:"The corkscrew leaves and vanilla-scented flowers are the whole show. High light plus cooler temperatures give the tightest curls — your steady warmth may relax them a little."
+    }
+  },
+  {
+    id:"adenium-godzilla", latin:"Adenium obesum ‘Godzilla’", common:"Desert Rose ‘Godzilla’",
+    family:"Apocynaceae", habit:"Caudex", season:"summer", chip:"Summer grower",
+    attribution:"carlfrederick — CC BY-NC (iNaturalist) · mature Adenium",
+    care:{
+      light:"As much light as you can give — a long, intense photoperiod fattens the caudex and drives flowering.",
+      water:"A heavy drinker in warmth: drench whenever the mix dries, roughly every 4–7 days under strong light. Cut back hard the moment it slows or drops leaves.",
+      dormancy:"Cool or short days trigger leaf drop and dormancy. At a steady 68–73 °F it may stay semi-evergreen — if so, keep light water going; if it goes bare, keep it nearly dry and warm until it re-sprouts. Never leave a leafless caudex wet.",
+      soil:"Gritty mix is essential — the fat caudex rots quickly if kept damp.",
+      feeding:"Balanced or bloom feed every 2–4 weeks in active growth.",
+      tips:"‘Godzilla’ is a fancy heavily-patterned flower selection — expect big, showy blooms. ⚠ Toxic sap (Apocynaceae): gloves, keep from pets. Raise the caudex at repot for that bonsai look."
+    }
+  },
+  {
+    id:"dorstenia-foetida", latin:"Dorstenia foetida", common:"Shield Flower",
+    family:"Moraceae", habit:"Caudex", season:"summer", chip:"Warm grower",
+    attribution:"Ateah Alfakih — CC BY-NC-SA (iNaturalist)",
+    care:{
+      light:"Bright light or a grow light; it tolerates slightly less intensity than the cacti.",
+      water:"Warm grower that likes a little more water than most caudex plants — keep it lightly moist-to-dry while warm and in leaf (drench, dry the top, roughly every 4–7 days). Reduce if it sheds leaves in cooler, shorter days.",
+      dormancy:"Often nearly evergreen in your warmth; it may briefly rest and drop some leaves in winter — just water less then.",
+      soil:"Gritty mix; it appreciates slightly more frequent watering than a desert cactus.",
+      feeding:"Light monthly feed during growth.",
+      tips:"It fires its seeds explosively — expect volunteer seedlings popping up in nearby pots. The green ‘shield’ is the flower head itself. Easy and forgiving."
+    }
+  },
+  {
+    id:"haworthia-comptoniana-oyayubihime", latin:"Haworthia emelyae var. comptoniana ‘Oyayubihime’", common:"Big-window Haworthia",
+    family:"Asphodelaceae", habit:"Window rosette", season:"evergreen", chip:"Cool-season / evergreen",
+    attribution:"David Martin — CC BY-NC (iNaturalist) · comptoniana",
+    care:{
+      light:"Moderate, bright-but-diffuse light — keep it back from intense LEDs. Too much light bleaches and reddens the leaves; gentler light keeps the translucent ‘windows’ clear and green.",
+      water:"Evergreen but with rot-prone roots — drench then fully dry, roughly every 10–14 days. It grows most in the cooler, shorter months; ease off in high summer.",
+      dormancy:"A mild summer rest. Largely evergreen indoors — it slows in the heat, then picks up in autumn. Reduce water whenever growth pauses.",
+      soil:"Gritty mix; keep water out of the tight rosette centre.",
+      feeding:"Weak feed 2–3 times per growing season.",
+      tips:"‘Oyayubihime’ is a prized large-window selection — flat, glassy leaf tops with fine vein patterning. Grow it a touch softer on light for the clearest windows, and don’t over-pot this collector’s plant."
+    }
+  },
+  {
+    id:"greenovia", latin:"Greenovia (Aeonium aureum)", common:"Mountain Rose",
+    family:"Crassulaceae", habit:"Rosette", season:"winter", chip:"Winter grower",
+    attribution:"Ulf Teghammar — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Bright light. During its growing season the rosette opens flat and needs good light to stay tight and compact.",
+      water:"Winter/cool-season grower. Water autumn–spring while open and growing (drench, dry the top, about weekly). Reduce sharply in summer.",
+      dormancy:"Summer-dormant — the rosette closes into a tight green ‘rose’ bud to conserve water. That closed rose is completely normal, not death; keep it nearly dry and cool-shaded until it opens again in cooler weather.",
+      soil:"Gritty mix; it likes a touch more moisture than an Echeveria while growing.",
+      feeding:"Light feed during cool-season growth.",
+      tips:"The closed rosebud form is the entire appeal — don’t overwater a closed, dormant plant. It offsets into clusters over time."
+    }
+  },
+  {
+    id:"haworthia-cooperi", latin:"Haworthia cooperi", common:"Cushion Aloe",
+    family:"Asphodelaceae", habit:"Window rosette", season:"evergreen", chip:"Cool-season / evergreen",
+    attribution:"Luc Strydom — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Soft, bright-diffuse light — keep it back from strong LEDs so the plump translucent ‘windows’ stay clear and swollen. Harsh light turns them dull or red and shrivels them.",
+      water:"Evergreen; drench then fully dry, roughly every 10–14 days. The bubble leaves should stay firm and plump — wrinkled means thirsty; mushy or translucent-brown means overwatered.",
+      dormancy:"A mild summer slowdown; it grows best in the cooler months and is largely continuous indoors. Ease water when it rests.",
+      soil:"Gritty mix — the fine roots hate staying wet.",
+      feeding:"Weak feed 2–3 times per season.",
+      tips:"Those glassy dome windows let buried plants photosynthesise underground in habitat. Keep the rosette centre dry; it offsets readily."
+    }
+  },
+  {
+    id:"euphorbia-obesa", latin:"Euphorbia obesa", common:"Baseball Plant",
+    family:"Euphorbiaceae", habit:"Globe caudex", season:"summer", chip:"Summer grower",
+    attribution:"Jean Audissou — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Full, strong light and a long photoperiod keep the globe symmetrical and the plaid patterning crisp.",
+      water:"Warm-season grower and a slow one — drench then fully dry, roughly every 10–14 days spring–autumn. Nearly dry in winter.",
+      dormancy:"A quiet winter rest — cut water and let it idle. It’s very slow, and overwatering a resting plant is the main way to kill it.",
+      soil:"Gritty mix, ultra-fast drainage.",
+      feeding:"Very light, once or twice in summer.",
+      tips:"⚠ Toxic milky latex — gloves if you ever cut it. It’s dioecious (separate male and female plants), so you need both to get seed. Don’t chase fast growth; slow and firm is healthy."
+    }
+  },
+  {
+    id:"astrophytum-onzuka", latin:"Astrophytum asterias ‘Onzuka’", common:"Sand Dollar Cactus",
+    family:"Cactaceae", habit:"Cactus", season:"summer", chip:"Summer grower",
+    attribution:"Joey Santore — CC BY-NC (iNaturalist) · asterias",
+    care:{
+      light:"Bright, strong light and a long photoperiod — but acclimate it to intense LEDs gradually; the spineless body can scorch if suddenly blasted.",
+      water:"Warm-season grower. Drench then fully dry, roughly every 10–14 days spring–autumn. Keep bone-dry in winter.",
+      dormancy:"A cool, dry winter rest — needed both for flowering and to prevent rot. A shorter winter photoperiod helps cue it.",
+      soil:"Gritty mix; some growers add extra limestone grit, but Bonsai Jack’s sharp drainage is already spot-on.",
+      feeding:"Low-nitrogen cactus feed once or twice in summer.",
+      tips:"‘Onzuka’ is an elite Japanese line with dense white flecking — high light keeps the flecks bright and silvery. No spines, so watch for scorch and for mealybugs hiding in the woolly areoles."
+    }
+  },
+  {
+    id:"adenium-obesum", latin:"Adenium obesum", common:"Desert Rose",
+    family:"Apocynaceae", habit:"Caudex", season:"summer", chip:"Summer grower",
+    attribution:"Morten Ross — CC BY (iNaturalist)",
+    care:{
+      light:"Maximum light and a long photoperiod — the more it gets, the fatter the caudex and the more it flowers.",
+      water:"Thirsty in warm growth: drench whenever the mix dries, roughly every 4–7 days under strong light. Cut back sharply if it slows or drops leaves.",
+      dormancy:"Triggered by cool or short days — leaf drop and rest. In your steady warmth it may stay semi-evergreen; keep light water flowing if so, or go nearly dry if it drops its leaves. Never keep a bare caudex wet.",
+      soil:"Gritty mix is essential — the caudex rots quickly in damp media.",
+      feeding:"Balanced or bloom feed every 2–4 weeks during growth.",
+      tips:"⚠ Toxic sap — gloves, and keep away from pets and children. Prune to encourage branching and a fuller crown; raise the caudex at each repot for the classic bonsai silhouette."
+    }
+  },
+  {
+    id:"sinningia-leucotricha", latin:"Sinningia leucotricha", common:"Brazilian Edelweiss",
+    family:"Gesneriaceae", habit:"Tuber", season:"summer", chip:"Warm grower",
+    attribution:"jf920 — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Bright indirect light or a grow light — the silvery, felted leaves can scorch under harsh direct LEDs.",
+      water:"Grows from a woody tuber in the warm season: keep it lightly moist-to-dry while in leaf (drench, dry the top, roughly every 5–8 days). Taper off as the leaves fade.",
+      dormancy:"Winter-dormant — the woolly stems die back to the bare tuber. Keep the tuber nearly dry (just an occasional splash so it doesn’t fully desiccate) until new silvery shoots push in spring.",
+      soil:"Gritty mix; sit the tuber at the surface. It tolerates a little more organic matter than desert plants, but sharp drainage still wins.",
+      feeding:"Light feed while in active leaf.",
+      tips:"The whole plant is cloaked in dense white wool — and coral-orange tubular flowers crown the fresh spring growth. Water at the soil to keep the felt clean and dry."
+    }
+  },
+  {
+    id:"pachypodium-inopinatum", latin:"Pachypodium inopinatum", common:"Madagascar Caudex",
+    family:"Apocynaceae", habit:"Caudex", season:"summer", chip:"Summer grower",
+    attribution:"Franck Rakotonasolo — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Very bright light and a long, strong photoperiod — a high-light Madagascan caudiciform.",
+      water:"Warm-season grower. While in leaf, drench then dry, roughly every 5–9 days. Reduce steadily as the leaves yellow in autumn.",
+      dormancy:"Winter-deciduous — it drops its leaves and rests. Keep it warm and nearly bone-dry through the leafless period (cold plus wet means rot); just a little water if the caudex starts to shrivel. Resume when new leaves appear.",
+      soil:"Gritty mix — sharp drainage is critical for the caudex.",
+      feeding:"Dilute feed monthly during active growth.",
+      tips:"A spiny caudex with white flowers; deciduous and slow. The number-one killer is water on a dormant plant — when in doubt in winter, don’t. Mind the spines when handling."
+    }
+  },
+  {
+    id:"lithops", latin:"Lithops", common:"Living Stones",
+    family:"Aizoaceae", habit:"Mimicry succulent", season:"winter", chip:"Summer-dormant",
+    attribution:"Nick Helme — CC BY-NC (iNaturalist)",
+    care:{
+      light:"Very high light, close to the LEDs, 12 h or more — too little and they bloat, stretch and topple, losing that flat pebble top.",
+      water:"The strict one — water by the cycle, not the calendar. Water sparingly in autumn (flowering) and again in spring. Stop completely in summer (they rest) and through winter leaf-renewal: the old pair shrivels to feed the new pair, and watering then causes stacking and rot. Resume only once the old leaves are papery husks.",
+      dormancy:"Summer-dormant, plus a winter leaf-renewal rest — two separate no-water windows. This clock runs on day length, so your steady temperatures won’t override it; follow the plant’s stage, not the thermometer.",
+      soil:"Extra-gritty — Bonsai Jack is ideal; top-dress with more pumice and match the surface stones for the camouflaged look.",
+      feeding:"Essentially none — they store everything they need.",
+      tips:"A soft, splitting or ‘double-decker’ stacked body means too much water. When unsure, don’t water. Daisy-like flowers emerge from the fissure in autumn."
+    }
+  },
+  {
+    id:"anacampseros-arachnoides", latin:"Anacampseros arachnoides", common:"Sand Rose",
+    family:"Anacampserotaceae", habit:"Clustering rosette", season:"summer", chip:"Summer grower",
+    care:{
+      light:"Bright light or a strong grow light keeps the little rosettes tight and the cobweb hairs dense — it stretches and loses that woolly look in low light.",
+      water:"Warm-season grower. Drench, then let the mix go completely dry, roughly every 7–12 days spring–autumn. It’s small and very drought-tough, so err on the dry side. Ease right off in winter.",
+      dormancy:"Rests through the cool, short-day months and is largely continuous in your steady warmth — just reduce water whenever growth slows.",
+      soil:"Gritty mix suits it well; sharp drainage keeps the fine root system healthy.",
+      feeding:"Weak feed once or twice in summer.",
+      tips:"The white ‘spider-web’ hairs are the whole charm. Flowers are usually self-fertile, so expect it to self-seed and pop up nearby. Water at the base to keep the wool clean."
+    }
+  },
+  {
+    id:"aloinopsis-setifera", latin:"Aloinopsis setifera", common:"Warty Aloinopsis",
+    family:"Aizoaceae", habit:"Tuberous mesemb", season:"winter", chip:"Winter grower",
+    care:{
+      light:"Very bright light, close to the LEDs — high light keeps the warty leaves plump and the rosette compact rather than bloated and stretched.",
+      water:"A winter grower and rot-prone: water carefully. Drench, then let it go bone-dry, roughly every 10–14 days through autumn–spring while growing. Keep it nearly dry in summer and whenever it isn’t actively growing.",
+      dormancy:"Summer-dormant. Growth stops in the heat — keep it dry and cool-shaded through summer, then resume careful watering as it wakes in autumn. This clock runs on day length, so your steady temperatures won’t override it.",
+      soil:"Extra-gritty — Bonsai Jack is ideal; the fat tuberous root rots fast in anything that stays wet. Top-dress with more pumice if you can.",
+      feeding:"Very light, once or twice during winter growth.",
+      tips:"It grows from a thick tuberous root that can be lifted above the soil for a caudex look. Yellow daisy-like flowers open in the afternoon. When in doubt, don’t water."
+    }
+  },
+  {
+    id:"fenestraria-rhopalophylla", latin:"Fenestraria rhopalophylla", common:"Baby Toes",
+    family:"Aizoaceae", habit:"Window mesemb", season:"winter", chip:"Winter grower",
+    care:{
+      light:"Very bright light straight overhead — the flat leaf tops are translucent ‘windows’ that need strong light funneled down. Too little and the club-shaped leaves stretch, soften and flop over.",
+      water:"Winter grower and notoriously prone to bursting — water sparingly. Drench, then let it dry completely, roughly every 10–14 days through autumn–spring. Keep nearly dry in summer. Over-full leaves split open.",
+      dormancy:"Summer-dormant. Rest it dry and cool-shaded through the heat, then resume careful watering in autumn as it wakes. The cycle runs on day length, so your steady temperatures won’t change it.",
+      soil:"Extra-gritty — Bonsai Jack is ideal; the shallow roots and fat leaves rot fast if the mix stays damp. Top-dress with pumice and match surface stones for the camouflaged look.",
+      feeding:"Very light, once during winter growth if at all.",
+      tips:"In habitat only the glassy leaf tips sit at the surface — the ‘windows’ pipe light down to buried tissue. Big daisy flowers appear in autumn–winter. A split leaf means too much water; when unsure, don’t."
+    }
+  },
+];
+
+// [wateringLevel, lightLevel] per plant — relative needs in this indoor setup
+const LEVELS = {
+  "adenium-obesum":["high","high"],
+  "adenium-godzilla":["high","high"],
+  "anacampseros-arachnoides":["low","high"],
+  "aloinopsis-setifera":["low","high"],
+  "albuca-concordiana":["medium","high"],
+  "astrophytum-onzuka":["low","high"],
+  "crassula-umbella":["medium","high"],
+  "dorstenia-foetida":["high","medium"],
+  "edithcolea-grandis":["low","medium"],
+  "euphorbia-obesa":["low","high"],
+  "fenestraria-rhopalophylla":["low","high"],
+  "euphorbia-poissonii":["medium","high"],
+  "gerrardanthus-macrorhizus":["medium","medium"],
+  "greenovia":["medium","medium"],
+  "haworthia-comptoniana-oyayubihime":["low","low"],
+  "haworthia-cooperi":["low","low"],
+  "lithops":["low","high"],
+  "mammillaria-compressa-yokan":["medium","high"],
+  "mammillaria-duwei":["medium","high"],
+  "othonna-herrei":["medium","high"],
+  "pachypodium-inopinatum":["medium","high"],
+  "sinningia-leucotricha":["medium","medium"],
+  "stephania-erecta":["medium","medium"],
+};
+PLANTS.forEach(p=>{ const [w,l]=LEVELS[p.id]||["medium","medium"]; p.waterLevel=w; p.lightLevel=l; });
+
+const CARE_FIELDS = [
+  ["light","Sunlight & Grow Lights","i-sun"],
+  ["water","Watering","i-water"],
+  ["dormancy","Dormancy & Cycle","i-moon"],
+  ["soil","Soil / Mix","i-soil"],
+  ["feeding","Feeding","i-jar"],
+  ["tips","Watch-outs & Notes","i-alert"],
+];
+
+const FACETS = [
+  {cat:"season", field:"season", label:"Season",
+    opts:[["winter","Winter"],["summer","Summer"],["evergreen","Evergreen"]]},
+  {cat:"water", field:"waterLevel", label:"Watering",
+    opts:[["high","High"],["medium","Medium"],["low","Low"]]},
+  {cat:"light", field:"lightLevel", label:"Light",
+    opts:[["high","High"],["medium","Medium"],["low","Low"]]},
+];
+
+const icon = id => `<svg viewBox="0 0 24 24"><use href="#${id}"/></svg>`;
+
+// filters
+const facetsEl = document.getElementById("facets");
+const FIELD = {}; FACETS.forEach(f=>FIELD[f.cat]=f.field);
+let facets = {season:null, water:null, light:null};
+let curQuery = "";
+
+facetsEl.innerHTML =
+  `<button class="filter allbtn" data-all="1" aria-pressed="true">All plants</button>` +
+  FACETS.map(f=>
+    `<span class="facet-sep"></span>
+     <div class="facet">
+       <span class="facet-label">${f.label}</span>
+       <div class="facet-btns">
+         ${f.opts.map(([v,l])=>
+           `<button class="filter" data-cat="${f.cat}" data-v="${v}" aria-pressed="false">${l}</button>`).join("")}
+       </div>
+     </div>`).join("");
+
+function syncPressed(){
+  facetsEl.querySelectorAll("button.filter").forEach(b=>{
+    const on = b.dataset.all
+      ? (!facets.season && !facets.water && !facets.light)
+      : facets[b.dataset.cat]===b.dataset.v;
+    b.setAttribute("aria-pressed", on);
+  });
+}
+
+const grid = document.getElementById("grid");
+
+const haystack = p => [p.latin,p.common,p.family,p.habit,p.chip].join(" ").toLowerCase();
+
+function renderGrid(){
+  const tokens = curQuery.toLowerCase().split(/\s+/).filter(Boolean);
+  const list = PLANTS
+    .filter(p=>Object.entries(facets).every(([c,v])=> !v || p[FIELD[c]]===v))
+    .filter(p=>{const h=haystack(p);return tokens.every(t=>h.includes(t));})
+    .sort((a,b)=>a.latin.localeCompare(b.latin));
+  if(!list.length){
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1">No plants match “${curQuery}”.</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(p=>`
+    <button class="card" data-id="${p.id}" aria-label="${p.latin} — care details">
+      <span class="tag">${p.chip}</span>
+      <span class="imgwrap">
+        <img src="images/${p.id}.jpg" alt="${p.latin}" loading="lazy">
+        <span class="veil"></span>
+      </span>
+      <span class="label">
+        <span class="latin">${p.latin}</span>
+        <span class="common">${p.common}</span>
+      </span>
+    </button>`).join("");
+}
+renderGrid();
+
+facetsEl.addEventListener("click",e=>{
+  const b = e.target.closest("button.filter"); if(!b) return;
+  if(b.dataset.all){
+    facets = {season:null, water:null, light:null};
+  } else {
+    const c = b.dataset.cat, v = b.dataset.v;
+    facets[c] = (facets[c]===v) ? null : v;   // toggle off if re-clicked
+  }
+  syncPressed();
+  renderGrid();
+});
+
+const searchEl = document.getElementById("search");
+searchEl.addEventListener("input",e=>{
+  curQuery = e.target.value.trim();
+  renderGrid();
+});
+
+// start typing anywhere → focus the search box and begin searching
+document.addEventListener("keydown",e=>{
+  if(overlay.classList.contains("open")) return;
+  const el = document.activeElement;
+  if(el && (el.tagName==="INPUT" || el.tagName==="TEXTAREA" || el.isContentEditable)) return;
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  if(e.key.length!==1) return;          // only printable characters
+  e.preventDefault();
+  searchEl.focus();
+  searchEl.value += e.key;
+  curQuery = searchEl.value.trim();
+  renderGrid();
+});
+
+// overlay
+const overlay = document.getElementById("overlay");
+const sheet = document.getElementById("sheet");
+
+function openPlant(id){
+  const p = PLANTS.find(x=>x.id===id); if(!p) return;
+  sheet.innerHTML = `
+    <button class="close" aria-label="Close" data-close>&times;</button>
+    <div class="hero">
+      <img src="images/${p.id}.jpg" alt="${p.latin}">
+      <div class="veil"></div>
+      <div class="htext">
+        <h2 id="sheet-name">${p.latin}</h2>
+        <div class="hcommon">${p.common}</div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="chips">
+        <span class="chip">${p.family}</span>
+        <span class="chip">${p.habit}</span>
+        <span class="chip">${p.chip}</span>
+      </div>
+      <ul class="care">
+        ${CARE_FIELDS.map(([k,label,ic])=>`
+          <li>
+            <span class="ico">${icon(ic)}</span>
+            <div>
+              <div class="k">${label}</div>
+              <div class="v">${p.care[k]}</div>
+            </div>
+          </li>`).join("")}
+      </ul>
+    </div>`;
+  overlay.classList.add("open");
+  document.body.classList.add("no-scroll");
+  overlay.scrollTop = 0;
+  sheet.querySelector("[data-close]").focus();
+  if(location.hash.slice(1)!==id) history.replaceState(null,"","#"+id);
+}
+function closePlant(){
+  overlay.classList.remove("open");
+  document.body.classList.remove("no-scroll");
+  if(location.hash) history.replaceState(null,"",location.pathname);
+}
+
+grid.addEventListener("click",e=>{
+  const c = e.target.closest(".card"); if(c) openPlant(c.dataset.id);
+});
+overlay.addEventListener("click",e=>{
+  if(e.target===overlay || e.target.closest("[data-close]")) closePlant();
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && overlay.classList.contains("open")) closePlant();
+});
+
+// open from URL hash (deep link / share)
+if(location.hash.length>1) openPlant(location.hash.slice(1));
+</script>
+</body>
+</html>
