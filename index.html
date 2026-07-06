@@ -468,6 +468,18 @@ const PLANTS = [
     }
   },
   {
+    id:"kalanchoe-daigremontiana", latin:"Kalanchoe daigremontiana", common:"Mother of Thousands",
+    family:"Crassulaceae", habit:"Plantlet-bearing succulent", season:"summer", chip:"Winter grower",
+    care:{
+      light:"Bright light or a strong grow light keeps it upright and brings out the leaf mottling and edge colour; it grows tall and leggy in low light. Very tolerant either way.",
+      water:"One of the most forgiving plants here — drench, then let the top few centimetres dry, roughly every 7–10 days in warm growth. Reduce in winter. The thin leaves wilt visibly when thirsty, so it tells you when to water.",
+      dormancy:"A warm-season grower with only a mild winter slowdown — largely continuous in your steady warmth. It often throws its pendant flower cluster in late winter.",
+      soil:"Happy in the gritty mix, and among the most tolerant here of a little extra organic matter and moisture — but sharp drainage still keeps it in check.",
+      feeding:"Light balanced feed monthly during active growth.",
+      tips:"⚠ Toxic to pets and people (cardiac glycosides) — keep away from animals and kids. It lines its leaf edges with hundreds of tiny plantlets that drop and root in every nearby pot, so stand it away from the rest of the collection or it will colonise the gritty mix. Nearly unkillable."
+    }
+  },
+  {
     id:"lithops", latin:"Lithops", common:"Living Stones",
     family:"Aizoaceae", habit:"Mimicry succulent", season:"winter", chip:"Summer-dormant",
     attribution:"Nick Helme — CC BY-NC (iNaturalist)",
@@ -536,6 +548,7 @@ const LEVELS = {
   "greenovia":["medium","medium"],
   "haworthia-comptoniana-oyayubihime":["low","low"],
   "haworthia-cooperi":["low","low"],
+  "kalanchoe-daigremontiana":["medium","high"],
   "lithops":["low","high"],
   "mammillaria-compressa-yokan":["medium","high"],
   "mammillaria-duwei":["medium","high"],
@@ -544,7 +557,15 @@ const LEVELS = {
   "sinningia-leucotricha":["medium","medium"],
   "stephania-erecta":["medium","medium"],
 };
-PLANTS.forEach(p=>{ const [w,l]=LEVELS[p.id]||["medium","medium"]; p.waterLevel=w; p.lightLevel=l; });
+// derive dormancy from growth season: winter growers rest in summer, and vice versa
+const DORM = {winter:"summer", summer:"winter", evergreen:"none"};
+const DORM_LABEL = {summer:"Summer dormant", winter:"Winter dormant", none:"Evergreen"};
+PLANTS.forEach(p=>{
+  const [w,l]=LEVELS[p.id]||["medium","medium"];
+  p.waterLevel=w; p.lightLevel=l;
+  p.dormant = DORM[p.season];
+  p.chip = DORM_LABEL[p.dormant];   // shown on the card tag, detail chip & search
+});
 
 const CARE_FIELDS = [
   ["light","Sunlight & Grow Lights","i-sun"],
@@ -556,8 +577,8 @@ const CARE_FIELDS = [
 ];
 
 const FACETS = [
-  {cat:"season", field:"season", label:"Season",
-    opts:[["winter","Winter"],["summer","Summer"],["evergreen","Evergreen"]]},
+  {cat:"dormancy", field:"dormant", label:"Dormancy",
+    opts:[["summer","Summer"],["winter","Winter"],["none","Evergreen"]]},
   {cat:"water", field:"waterLevel", label:"Watering",
     opts:[["high","High"],["medium","Medium"],["low","Low"]]},
   {cat:"light", field:"lightLevel", label:"Light",
@@ -569,7 +590,7 @@ const icon = id => `<svg viewBox="0 0 24 24"><use href="#${id}"/></svg>`;
 // filters
 const facetsEl = document.getElementById("facets");
 const FIELD = {}; FACETS.forEach(f=>FIELD[f.cat]=f.field);
-let facets = {season:null, water:null, light:null};
+let facets = {dormancy:null, water:null, light:null};
 let curQuery = "";
 
 facetsEl.innerHTML =
@@ -587,7 +608,7 @@ facetsEl.innerHTML =
 function syncPressed(){
   facetsEl.querySelectorAll("button.filter").forEach(b=>{
     const on = b.dataset.all
-      ? (!facets.season && !facets.water && !facets.light)
+      ? (!facets.dormancy && !facets.water && !facets.light)
       : facets[b.dataset.cat]===b.dataset.v;
     b.setAttribute("aria-pressed", on);
   });
@@ -625,7 +646,7 @@ renderGrid();
 facetsEl.addEventListener("click",e=>{
   const b = e.target.closest("button.filter"); if(!b) return;
   if(b.dataset.all){
-    facets = {season:null, water:null, light:null};
+    facets = {dormancy:null, water:null, light:null};
   } else {
     const c = b.dataset.cat, v = b.dataset.v;
     facets[c] = (facets[c]===v) ? null : v;   // toggle off if re-clicked

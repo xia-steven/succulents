@@ -37,13 +37,3 @@ open index.html
 ```
 
 Deep-link straight to a plant with a URL hash, e.g. `index.html#lithops`.
-
-## Photos
-
-Plant photographs are from [iNaturalist](https://www.inaturalist.org) contributors
-under Creative Commons licenses. Per-image attribution and license are recorded in
-[`images/credits.json`](images/credits.json).
-
-## Note
-
-A personal project — not intended for production.
