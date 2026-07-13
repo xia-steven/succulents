@@ -126,6 +126,15 @@
   }
   .card .label{position:absolute;left:16px;right:16px;bottom:15px;color:#fff}
   .card .latin{display:block;font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.18;letter-spacing:.2px}
+  .card .dormant{
+    position:absolute;top:11px;right:11px;z-index:2;
+    display:inline-flex;align-items:center;gap:5px;
+    padding:4px 9px 4px 7px;border-radius:999px;
+    background:rgba(18,24,18,.66);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+    color:#f4d79a;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    box-shadow:0 2px 8px rgba(0,0,0,.28);
+  }
+  .card .dormant svg{width:13px;height:13px;stroke:#f0c674;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
   /* ---- overlay ---- */
   .overlay{
@@ -158,6 +167,12 @@
     background:var(--chip);color:var(--chip-ink);font-size:12px;font-weight:600;
     padding:5px 11px;border-radius:999px;letter-spacing:.02em;
   }
+  .chip.now-dormant{
+    display:inline-flex;align-items:center;gap:5px;
+    background:rgba(240,198,116,.20);color:#8a6a1f;
+  }
+  .chip.now-dormant svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:-1px}
+  @media (prefers-color-scheme: dark){.chip.now-dormant{background:rgba(240,198,116,.16);color:#f0c674}}
   .care{list-style:none;margin:0;padding:0}
   .care li{display:flex;gap:15px;padding:16px 0;border-top:1px solid var(--line)}
   .care li:first-child{border-top:0;padding-top:2px}
@@ -234,6 +249,15 @@ const FACETS = [
 // dormancy chip label per derived dormancy
 const DORM_LABEL = {summer:"Summer dormant", winter:"Winter dormant", none:"Evergreen"};
 
+// A plant's dormancy runs on the season / day-length (see the care notes), not the
+// steady indoor thermostat — so flag it as resting *now* when today's month falls in
+// its dormant season. Northern-hemisphere meteorological seasons; evergreens never rest.
+const SEASON_MONTHS = {summer:[5,6,7], winter:[11,0,1]}; // month index: 0=Jan … 11=Dec
+function isDormantNow(p, date=new Date()){
+  const months = SEASON_MONTHS[p.dormancy];
+  return !!months && months.includes(date.getMonth());
+}
+
 const icon = id => `<svg viewBox="0 0 24 24"><use href="#${id}"/></svg>`;
 
 // filters
@@ -283,16 +307,24 @@ function renderGrid(){
     grid.innerHTML = `<div class="empty" style="grid-column:1/-1">No plants match “${curQuery}”.</div>`;
     return;
   }
-  grid.innerHTML = list.map(p=>`
-    <button class="card" data-id="${p.id}" aria-label="${p.latin} — care details">
+  grid.innerHTML = list.map(p=>{
+    const dorm = isDormantNow(p);
+    const badge = dorm
+      ? `<span class="dormant" title="${DORM_LABEL[p.dormancy]} — resting now; ease right off watering">${icon("i-alert")}Dormant</span>`
+      : "";
+    const aria = `${p.latin} — care details${dorm ? ` (${DORM_LABEL[p.dormancy].toLowerCase()}, resting now)` : ""}`;
+    return `
+    <button class="card" data-id="${p.id}" aria-label="${aria}">
       <span class="imgwrap">
         <img src="images/${p.id}.jpg" alt="${p.latin}" loading="lazy">
         <span class="veil"></span>
+        ${badge}
       </span>
       <span class="label">
         <span class="latin">${p.latin}</span>
       </span>
-    </button>`).join("");
+    </button>`;
+  }).join("");
 }
 
 facetsEl.addEventListener("click",e=>{
@@ -332,6 +364,7 @@ const overlay = document.getElementById("overlay");
 const sheet = document.getElementById("sheet");
 
 function renderSheet(p){
+  const dorm = isDormantNow(p);
   sheet.innerHTML = `
     <button class="close" aria-label="Close" data-close>&times;</button>
     <div class="hero">
@@ -345,7 +378,7 @@ function renderSheet(p){
       <div class="chips">
         <span class="chip">${p.family}</span>
         <span class="chip">${p.habit}</span>
-        <span class="chip">${DORM_LABEL[p.dormancy]}</span>
+        <span class="chip${dorm ? " now-dormant" : ""}">${dorm ? icon("i-alert") : ""}${DORM_LABEL[p.dormancy]}${dorm ? " · resting now" : ""}</span>
       </div>
       <ul class="care">
         ${CARE_FIELDS.map(([k,label,ic])=>`
