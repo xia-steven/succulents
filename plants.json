@@ -1,0 +1,498 @@
+{
+  "$schema": "./plants.schema.json",
+  "plants": [
+    {
+      "id": "othonna-herrei",
+      "latin": "Othonna herrei",
+      "family": "Asteraceae",
+      "habit": "Caudex",
+      "lightLevel": "medium",
+      "waterLevel": "medium",
+      "dormancy": "summer",
+      "care": {
+        "light": "Bright light through its autumn–spring growth, but not fierce, roasting sun — in habitat it hides on cool, shaded south-facing slopes and under rocks. Good light still keeps the warty finger-stems compact and near-black, so give it a bright spot or gentle morning sun; ease off entirely during its summer rest.",
+        "water": "Water regularly through autumn–spring while it’s in leaf — drench, then let the mix go bone-dry (roughly every 10–14 days; it’s water-wise, so don’t rush it). As days lengthen and leaves drop, cut water sharply.",
+        "dormancy": "Summer-dormant. Leaves yellow and drop, leaving the bare knobbly caudex. Your steady warmth won’t override this internal clock — keep it dry, shaded and airy through the rest, then resume watering when new leaves push in autumn.",
+        "soil": "Bonsai Jack gritty is ideal — caudex rot is the main risk, so the fast drainage is exactly what it wants.",
+        "feeding": "Weak (¼-strength) feed once a month during winter growth only.",
+        "tips": "Never water a leafless, dormant plant on a schedule. Lift the caudex a little higher at each repot for display. Watch for aphids and mealybugs on soft new growth."
+      }
+    },
+    {
+      "id": "crassula-umbella",
+      "latin": "Crassula umbella",
+      "family": "Crassulaceae",
+      "habit": "Caudex",
+      "lightLevel": "medium",
+      "waterLevel": "medium",
+      "dormancy": "summer",
+      "care": {
+        "light": "Bright but filtered light — an unshaded spot out of harsh direct rays. In habitat it grows tucked under overhanging rocks, so fierce sun scorches it; enough gentle light still keeps the cupped ‘wine-glass’ leaves tightly cupped around the flower stem rather than flat and stretched.",
+        "water": "Winter grower — water autumn through spring while actively growing (drench, then fully dry, about weekly). Ease right off through summer.",
+        "dormancy": "Summer-dormant. Often dies back to its small caudex and roots in the heat, then re-sprouts in cooler months. Keep it nearly dry while resting.",
+        "soil": "Gritty mix — sharp drainage is essential for the little caudex.",
+        "feeding": "Light monthly feed during active growth.",
+        "tips": "Short-lived by nature — let it flower and self-seed to keep the line going. Watch for rot at the base if it’s kept wet while resting."
+      }
+    },
+    {
+      "id": "euphorbia-poissonii",
+      "latin": "Euphorbia poissonii",
+      "family": "Euphorbiaceae",
+      "habit": "Succulent shrub",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "winter",
+      "care": {
+        "light": "Very bright light and a long photoperiod — this is a full-sun West African species and it loves all the light you can give.",
+        "water": "Warm-season grower. Drench then dry, roughly every 7–10 days spring–autumn while in leaf. Reduce as it drops leaves in the cool, short-day season.",
+        "dormancy": "Facultatively deciduous. Sheds its crown of leaves and idles when light and warmth drop; in your steady warmth it may stay partly in leaf — follow the plant and water less whenever it’s bare.",
+        "soil": "Gritty mix, fast drainage.",
+        "feeding": "Monthly dilute feed during active growth.",
+        "tips": "⚠ Handle with care — the milky latex is highly toxic and a severe skin/eye irritant. Wear gloves when pruning and keep it away from pets and children."
+      }
+    },
+    {
+      "id": "stephania-erecta",
+      "latin": "Stephania erecta",
+      "family": "Menispermaceae",
+      "habit": "Caudex",
+      "lightLevel": "medium",
+      "waterLevel": "medium",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright indirect light or a grow light for the climbing vine and its round, parasol-like peltate leaves. Give the vine something to twine up.",
+        "water": "Only start watering once the vine has actually sprouted. In growth keep the mix on the moist-to-dry side — drench, then let the top dry, about weekly. Do not water the bare tuber before it wakes: that’s the classic way to rot one.",
+        "dormancy": "Strongly winter-dormant. The whole vine yellows and dies back to the bare caudex and it can rest for months. Stop watering entirely and keep the dry tuber warm; new shoots appear in spring or early summer when it’s ready.",
+        "soil": "Gritty mix — sit the tuber ON the surface, roots down. Burying the caudex invites rot.",
+        "feeding": "Light feed while in full leaf.",
+        "tips": "Patience: a fresh tuber can take weeks to months to break. Keep it bone-dry until you see a shoot."
+      }
+    },
+    {
+      "id": "gerrardanthus-macrorhizus",
+      "latin": "Gerrardanthus macrorhizus",
+      "family": "Cucurbitaceae",
+      "habit": "Caudex",
+      "lightLevel": "medium",
+      "waterLevel": "medium",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright light, with a trellis for the vine. More light means a fatter caudex and shorter spacing between leaves.",
+        "water": "Warm-season grower. Water regularly while it’s vining (drench, then dry the top, roughly every 5–8 days). Taper off as it slows in autumn.",
+        "dormancy": "Winter-dormant — the vine dies back. Keep the big storage caudex nearly dry and just watch it, then resume watering when it re-sprouts.",
+        "soil": "Gritty mix; keep part of the caudex exposed above the line for display and to keep it dry.",
+        "feeding": "Monthly dilute feed during active growth.",
+        "tips": "A fast, vigorous climber — cut it back to shape. The large storage root makes it very drought-tough, so err on the dry side."
+      }
+    },
+    {
+      "id": "edithcolea-grandis",
+      "latin": "Edithcolea grandis",
+      "family": "Apocynaceae",
+      "habit": "Stem succulent",
+      "lightLevel": "medium",
+      "waterLevel": "low",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright but slightly filtered strong light — sudden intense LED can scorch the soft angular stems. It loves warmth and light together.",
+        "water": "The delicate one — notoriously rot-prone. Water sparingly: a full drench only once the mix is completely dry and the stems are firm, roughly every 10–14 days in warm growth. Much less in winter; nearly dry when cool.",
+        "dormancy": "Warmth-loving; rests through the cool, short-day months. It despises cold, wet feet — your warm, airy room suits it well, but keep it on the dry side all year.",
+        "soil": "Extra-gritty, ultra-fast drainage — top-dress with more pumice if you can.",
+        "feeding": "Very light, once or twice in summer only.",
+        "tips": "Can collapse fast if it rots — airflow is your ally. The huge starfish flower is spectacular but smells of carrion (it’s fly-pollinated). Established rooted cuttings are far easier than seedlings."
+      }
+    },
+    {
+      "id": "mammillaria-compressa-yokan",
+      "latin": "Mammillaria compressa cv. ‘Yokan’",
+      "family": "Cactaceae",
+      "habit": "Cactus",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "winter",
+      "care": {
+        "light": "Full, strong light and a long photoperiod for tight bodies and good spination.",
+        "water": "Warm-season grower. Drench then fully dry, roughly every 7–12 days spring–autumn. Keep dry through winter.",
+        "dormancy": "A cool, dry winter rest — cut water and let it slow. Cacti need that dryish rest to set flowers; a shorter winter photoperiod helps cue it.",
+        "soil": "Gritty mix — perfect for cactus roots.",
+        "feeding": "Low-nitrogen cactus feed once or twice in summer.",
+        "tips": "‘Yokan’ is a selected form — keep light high to hold its form. It offsets into big clumps and rings itself with pink flowers in spring."
+      }
+    },
+    {
+      "id": "mammillaria-duwei",
+      "latin": "Mammillaria duwei",
+      "family": "Cactaceae",
+      "habit": "Cactus",
+      "lightLevel": "high",
+      "waterLevel": "low",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright, strong light; the soft golden hooked spines and lemon flowers colour up well under good light.",
+        "water": "Soft-bodied and very rot-prone, so keep it on the dry side — drench, then let the mix go bone-dry and wait a little longer before the next, roughly every 10–14 days in warm growth. Bone-dry through winter.",
+        "dormancy": "Keep cool and dry in winter to encourage blooms. It’s a small, slightly soft-bodied species — don’t let it sit wet.",
+        "soil": "Gritty mix.",
+        "feeding": "Light cactus feed once or twice in summer.",
+        "tips": "Err on the dry side given the soft body. Charming lemon-yellow flowers and fine hooked central spines."
+      }
+    },
+    {
+      "id": "albuca-concordiana",
+      "latin": "Albuca concordiana",
+      "family": "Asparagaceae",
+      "habit": "Bulb",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "summer",
+      "care": {
+        "light": "Very bright light to keep the leaves tightly coiled — low light gives loose, floppy spirals.",
+        "water": "Winter-growing bulb, and decidedly water-wise. Water autumn–spring while in leaf (drench, let the top dry, roughly every 10–14 days) and ease off as it comes into flower. Stop watering as the leaves yellow for summer.",
+        "dormancy": "Summer-dormant. Foliage dies back to the bulb; keep it completely dry and cool-shaded through summer, then restart watering when new spirals emerge in autumn.",
+        "soil": "Gritty mix; keep the neck of the bulb at or just above the surface.",
+        "feeding": "Weak bulb or balanced feed a couple of times during winter growth.",
+        "tips": "The corkscrew leaves and vanilla-scented flowers are the whole show. High light plus cooler temperatures give the tightest curls — your steady warmth may relax them a little."
+      }
+    },
+    {
+      "id": "adenium-godzilla",
+      "latin": "Adenium obesum ‘Godzilla’",
+      "family": "Apocynaceae",
+      "habit": "Caudex",
+      "lightLevel": "high",
+      "waterLevel": "high",
+      "dormancy": "winter",
+      "care": {
+        "light": "As much light as you can give — a long, intense photoperiod fattens the caudex and drives flowering.",
+        "water": "A heavy drinker in warmth: drench whenever the mix dries, roughly every 4–7 days under strong light. Cut back hard the moment it slows or drops leaves.",
+        "dormancy": "Cool or short days trigger leaf drop and dormancy. At a steady 68–73 °F it may stay semi-evergreen — if so, keep light water going; if it goes bare, keep it nearly dry and warm until it re-sprouts. Never leave a leafless caudex wet.",
+        "soil": "Gritty mix is essential — the fat caudex rots quickly if kept damp.",
+        "feeding": "Balanced or bloom feed every 2–4 weeks in active growth.",
+        "tips": "‘Godzilla’ is a fancy heavily-patterned flower selection — expect big, showy blooms. ⚠ Toxic sap (Apocynaceae): gloves, keep from pets. Raise the caudex at repot for that bonsai look."
+      }
+    },
+    {
+      "id": "dorstenia-foetida",
+      "latin": "Dorstenia foetida",
+      "family": "Moraceae",
+      "habit": "Caudex",
+      "lightLevel": "medium",
+      "waterLevel": "high",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright light or a grow light; it tolerates slightly less intensity than the cacti.",
+        "water": "Warm grower that likes a little more water than most caudex plants — keep it lightly moist-to-dry while warm and in leaf (drench, dry the top, roughly every 4–7 days). Reduce if it sheds leaves in cooler, shorter days.",
+        "dormancy": "Often nearly evergreen in your warmth; it may briefly rest and drop some leaves in winter — just water less then.",
+        "soil": "Gritty mix; it appreciates slightly more frequent watering than a desert cactus.",
+        "feeding": "Light monthly feed during growth.",
+        "tips": "It fires its seeds explosively — expect volunteer seedlings popping up in nearby pots. The green ‘shield’ is the flower head itself. Easy and forgiving."
+      }
+    },
+    {
+      "id": "haworthia-comptoniana-oyayubihime",
+      "latin": "Haworthia emelyae var. comptoniana ‘Oyayubihime’",
+      "family": "Asphodelaceae",
+      "habit": "Window rosette",
+      "lightLevel": "low",
+      "waterLevel": "low",
+      "dormancy": "none",
+      "care": {
+        "light": "Moderate, bright-but-diffuse light — keep it back from intense LEDs. Too much light bleaches and reddens the leaves; gentler light keeps the translucent ‘windows’ clear and green.",
+        "water": "Evergreen but with rot-prone roots — drench then fully dry, roughly every 10–14 days. It grows most in the cooler, shorter months; ease off in high summer.",
+        "dormancy": "A mild summer rest. Largely evergreen indoors — it slows in the heat, then picks up in autumn. Reduce water whenever growth pauses.",
+        "soil": "Gritty mix; keep water out of the tight rosette centre.",
+        "feeding": "Weak feed 2–3 times per growing season.",
+        "tips": "‘Oyayubihime’ is a prized large-window selection — flat, glassy leaf tops with fine vein patterning. Grow it a touch softer on light for the clearest windows, and don’t over-pot this collector’s plant."
+      }
+    },
+    {
+      "id": "greenovia",
+      "latin": "Greenovia (Aeonium aureum)",
+      "family": "Crassulaceae",
+      "habit": "Rosette",
+      "lightLevel": "medium",
+      "waterLevel": "medium",
+      "dormancy": "summer",
+      "care": {
+        "light": "Bright light. During its growing season the rosette opens flat and needs good light to stay tight and compact.",
+        "water": "Winter/cool-season grower. Water autumn–spring while open and growing (drench, dry the top, about weekly). Reduce sharply in summer.",
+        "dormancy": "Summer-dormant — the rosette closes into a tight green ‘rose’ bud to conserve water. That closed rose is completely normal, not death; keep it nearly dry and cool-shaded until it opens again in cooler weather.",
+        "soil": "Gritty mix; it likes a touch more moisture than an Echeveria while growing.",
+        "feeding": "Light feed during cool-season growth.",
+        "tips": "The closed rosebud form is the entire appeal — don’t overwater a closed, dormant plant. It offsets into clusters over time."
+      }
+    },
+    {
+      "id": "haworthia-cooperi",
+      "latin": "Haworthia cooperi",
+      "family": "Asphodelaceae",
+      "habit": "Window rosette",
+      "lightLevel": "low",
+      "waterLevel": "low",
+      "dormancy": "none",
+      "care": {
+        "light": "Soft, bright-diffuse light — keep it back from strong LEDs so the plump translucent ‘windows’ stay clear and swollen. Harsh light turns them dull or red and shrivels them.",
+        "water": "Evergreen; drench then fully dry, roughly every 10–14 days. The bubble leaves should stay firm and plump — wrinkled means thirsty; mushy or translucent-brown means overwatered.",
+        "dormancy": "A mild summer slowdown; it grows best in the cooler months and is largely continuous indoors. Ease water when it rests.",
+        "soil": "Gritty mix — the fine roots hate staying wet.",
+        "feeding": "Weak feed 2–3 times per season.",
+        "tips": "Those glassy dome windows let buried plants photosynthesise underground in habitat. Keep the rosette centre dry; it offsets readily."
+      }
+    },
+    {
+      "id": "euphorbia-obesa",
+      "latin": "Euphorbia obesa",
+      "family": "Euphorbiaceae",
+      "habit": "Globe caudex",
+      "lightLevel": "high",
+      "waterLevel": "low",
+      "dormancy": "winter",
+      "care": {
+        "light": "Full, strong light and a long photoperiod keep the globe symmetrical and the plaid patterning crisp.",
+        "water": "Warm-season grower and a slow one — drench then fully dry, roughly every 10–14 days spring–autumn. Nearly dry in winter.",
+        "dormancy": "A quiet winter rest — cut water and let it idle. It’s very slow, and overwatering a resting plant is the main way to kill it.",
+        "soil": "Gritty mix, ultra-fast drainage.",
+        "feeding": "Very light, once or twice in summer.",
+        "tips": "⚠ Toxic milky latex — gloves if you ever cut it. It’s dioecious (separate male and female plants), so you need both to get seed. Don’t chase fast growth; slow and firm is healthy."
+      }
+    },
+    {
+      "id": "astrophytum-onzuka",
+      "latin": "Astrophytum asterias ‘Onzuka’",
+      "family": "Cactaceae",
+      "habit": "Cactus",
+      "lightLevel": "high",
+      "waterLevel": "low",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright, strong light and a long photoperiod — but acclimate it to intense LEDs gradually; the spineless body can scorch if suddenly blasted.",
+        "water": "Warm-season grower. Drench then fully dry, roughly every 10–14 days spring–autumn. Keep bone-dry in winter.",
+        "dormancy": "A cool, dry winter rest — needed both for flowering and to prevent rot. A shorter winter photoperiod helps cue it.",
+        "soil": "Gritty mix; some growers add extra limestone grit, but Bonsai Jack’s sharp drainage is already spot-on.",
+        "feeding": "Low-nitrogen cactus feed once or twice in summer.",
+        "tips": "‘Onzuka’ is an elite Japanese line with dense white flecking — high light keeps the flecks bright and silvery. No spines, so watch for scorch and for mealybugs hiding in the woolly areoles."
+      }
+    },
+    {
+      "id": "adenium-obesum",
+      "latin": "Adenium obesum",
+      "family": "Apocynaceae",
+      "habit": "Caudex",
+      "lightLevel": "high",
+      "waterLevel": "high",
+      "dormancy": "winter",
+      "care": {
+        "light": "Maximum light and a long photoperiod — the more it gets, the fatter the caudex and the more it flowers.",
+        "water": "Thirsty in warm growth: drench whenever the mix dries, roughly every 4–7 days under strong light. Cut back sharply if it slows or drops leaves.",
+        "dormancy": "Triggered by cool or short days — leaf drop and rest. In your steady warmth it may stay semi-evergreen; keep light water flowing if so, or go nearly dry if it drops its leaves. Never keep a bare caudex wet.",
+        "soil": "Gritty mix is essential — the caudex rots quickly in damp media.",
+        "feeding": "Balanced or bloom feed every 2–4 weeks during growth.",
+        "tips": "⚠ Toxic sap — gloves, and keep away from pets and children. Prune to encourage branching and a fuller crown; raise the caudex at each repot for the classic bonsai silhouette."
+      }
+    },
+    {
+      "id": "sinningia-leucotricha",
+      "latin": "Sinningia leucotricha",
+      "family": "Gesneriaceae",
+      "habit": "Tuber",
+      "lightLevel": "medium",
+      "waterLevel": "high",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright indirect light or a grow light — the silvery, felted leaves can scorch under harsh direct LEDs.",
+        "water": "Grows from a woody tuber in the warm season: keep it lightly moist-to-dry while in leaf (drench, dry the top, roughly every 5–8 days). Taper off as the leaves fade.",
+        "dormancy": "Winter-dormant — the woolly stems die back to the bare tuber. Keep the tuber nearly dry (just an occasional splash so it doesn’t fully desiccate) until new silvery shoots push in spring.",
+        "soil": "Gritty mix; sit the tuber at the surface. It tolerates a little more organic matter than desert plants, but sharp drainage still wins.",
+        "feeding": "Light feed while in active leaf.",
+        "tips": "The whole plant is cloaked in dense white wool — and coral-orange tubular flowers crown the fresh spring growth. Water at the soil to keep the felt clean and dry."
+      }
+    },
+    {
+      "id": "pachypodium-inopinatum",
+      "latin": "Pachypodium inopinatum",
+      "family": "Apocynaceae",
+      "habit": "Caudex",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "winter",
+      "care": {
+        "light": "Very bright light and a long, strong photoperiod — a high-light Madagascan caudiciform.",
+        "water": "Warm-season grower. While in leaf, drench then dry, roughly every 5–9 days. Reduce steadily as the leaves yellow in autumn.",
+        "dormancy": "Winter-deciduous — it drops its leaves and rests. Keep it warm and nearly bone-dry through the leafless period (cold plus wet means rot); just a little water if the caudex starts to shrivel. Resume when new leaves appear.",
+        "soil": "Gritty mix — sharp drainage is critical for the caudex.",
+        "feeding": "Dilute feed monthly during active growth.",
+        "tips": "A spiny caudex with white flowers; deciduous and slow. The number-one killer is water on a dormant plant — when in doubt in winter, don’t. Mind the spines when handling."
+      }
+    },
+    {
+      "id": "kalanchoe-daigremontiana",
+      "latin": "Kalanchoe daigremontiana",
+      "family": "Crassulaceae",
+      "habit": "Plantlet-bearing succulent",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright light or a strong grow light keeps it upright and brings out the leaf mottling and edge colour; it grows tall and leggy in low light. Very tolerant either way.",
+        "water": "One of the most forgiving plants here — drench, then let the top few centimetres dry, roughly every 7–10 days in warm growth. Reduce in winter. The thin leaves wilt visibly when thirsty, so it tells you when to water.",
+        "dormancy": "A warm-season grower with only a mild winter slowdown — largely continuous in your steady warmth. It often throws its pendant flower cluster in late winter.",
+        "soil": "Happy in the gritty mix, and among the most tolerant here of a little extra organic matter and moisture — but sharp drainage still keeps it in check.",
+        "feeding": "Light balanced feed monthly during active growth.",
+        "tips": "⚠ Toxic to pets and people (cardiac glycosides) — keep away from animals and kids. It lines its leaf edges with hundreds of tiny plantlets that drop and root in every nearby pot, so stand it away from the rest of the collection or it will colonise the gritty mix. Nearly unkillable."
+      }
+    },
+    {
+      "id": "lithops",
+      "latin": "Lithops",
+      "family": "Aizoaceae",
+      "habit": "Mimicry succulent",
+      "lightLevel": "high",
+      "waterLevel": "low",
+      "dormancy": "summer",
+      "care": {
+        "light": "Very high light, close to the LEDs, 12 h or more — too little and they bloat, stretch and topple, losing that flat pebble top.",
+        "water": "The strict one — water by the cycle, not the calendar. Water sparingly in autumn (flowering) and again in spring. Stop completely in summer (they rest) and through winter leaf-renewal: the old pair shrivels to feed the new pair, and watering then causes stacking and rot. Resume only once the old leaves are papery husks.",
+        "dormancy": "Summer-dormant, plus a winter leaf-renewal rest — two separate no-water windows. This clock runs on day length, so your steady temperatures won’t override it; follow the plant’s stage, not the thermometer.",
+        "soil": "Extra-gritty — Bonsai Jack is ideal; top-dress with more pumice and match the surface stones for the camouflaged look.",
+        "feeding": "Essentially none — they store everything they need.",
+        "tips": "A soft, splitting or ‘double-decker’ stacked body means too much water. When unsure, don’t water. Daisy-like flowers emerge from the fissure in autumn."
+      }
+    },
+    {
+      "id": "anacampseros-arachnoides",
+      "latin": "Anacampseros arachnoides",
+      "family": "Anacampserotaceae",
+      "habit": "Clustering rosette",
+      "lightLevel": "high",
+      "waterLevel": "low",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright light or a strong grow light keeps the little rosettes tight and the cobweb hairs dense — it stretches and loses that woolly look in low light.",
+        "water": "Warm-season grower. Drench, then let the mix go completely dry, roughly every 7–12 days spring–autumn. It’s small and very drought-tough, so err on the dry side. Ease right off in winter.",
+        "dormancy": "Rests through the cool, short-day months and is largely continuous in your steady warmth — just reduce water whenever growth slows.",
+        "soil": "Gritty mix suits it well; sharp drainage keeps the fine root system healthy.",
+        "feeding": "Weak feed once or twice in summer.",
+        "tips": "The white ‘spider-web’ hairs are the whole charm. Flowers are usually self-fertile, so expect it to self-seed and pop up nearby. Water at the base to keep the wool clean."
+      }
+    },
+    {
+      "id": "aloinopsis-setifera",
+      "latin": "Aloinopsis setifera",
+      "family": "Aizoaceae",
+      "habit": "Tuberous mesemb",
+      "lightLevel": "high",
+      "waterLevel": "low",
+      "dormancy": "summer",
+      "care": {
+        "light": "Very bright light, close to the LEDs — high light keeps the warty leaves plump and the rosette compact rather than bloated and stretched.",
+        "water": "A winter grower and rot-prone: water carefully. Drench, then let it go bone-dry, roughly every 10–14 days through autumn–spring while growing. Keep it nearly dry in summer and whenever it isn’t actively growing.",
+        "dormancy": "Summer-dormant. Growth stops in the heat — keep it dry and cool-shaded through summer, then resume careful watering as it wakes in autumn. This clock runs on day length, so your steady temperatures won’t override it.",
+        "soil": "Extra-gritty — Bonsai Jack is ideal; the fat tuberous root rots fast in anything that stays wet. Top-dress with more pumice if you can.",
+        "feeding": "Very light, once or twice during winter growth.",
+        "tips": "It grows from a thick tuberous root that can be lifted above the soil for a caudex look. Yellow daisy-like flowers open in the afternoon. When in doubt, don’t water."
+      }
+    },
+    {
+      "id": "fenestraria-rhopalophylla",
+      "latin": "Fenestraria rhopalophylla",
+      "family": "Aizoaceae",
+      "habit": "Window mesemb",
+      "lightLevel": "high",
+      "waterLevel": "low",
+      "dormancy": "summer",
+      "care": {
+        "light": "Very bright light straight overhead — the flat leaf tops are translucent ‘windows’ that need strong light funneled down. Too little and the club-shaped leaves stretch, soften and flop over.",
+        "water": "Winter grower and notoriously prone to bursting — water sparingly. Drench, then let it dry completely, roughly every 10–14 days through autumn–spring. Keep nearly dry in summer. Over-full leaves split open.",
+        "dormancy": "Summer-dormant. Rest it dry and cool-shaded through the heat, then resume careful watering in autumn as it wakes. The cycle runs on day length, so your steady temperatures won’t change it.",
+        "soil": "Extra-gritty — Bonsai Jack is ideal; the shallow roots and fat leaves rot fast if the mix stays damp. Top-dress with pumice and match surface stones for the camouflaged look.",
+        "feeding": "Very light, once during winter growth if at all.",
+        "tips": "In habitat only the glassy leaf tips sit at the surface — the ‘windows’ pipe light down to buried tissue. Big daisy flowers appear in autumn–winter. A split leaf means too much water; when unsure, don’t."
+      }
+    },
+    {
+      "id": "euphorbia-mammillaris",
+      "latin": "Euphorbia mammillaris",
+      "family": "Euphorbiaceae",
+      "habit": "Stem succulent",
+      "lightLevel": "high",
+      "waterLevel": "low",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright, strong light and a long photoperiod keep the short, ribbed, corncob-like stems tight and compact; the ‘Variegata’ form colours up pink-white in high light.",
+        "water": "Warm-season grower. Drench, then let the mix fully dry, roughly every 10–14 days spring–autumn. Keep nearly dry in winter.",
+        "dormancy": "A cool, dry winter rest — reduce water and let it idle. It’s tough and drought-hardy, so overwatering a resting plant is the main risk.",
+        "soil": "Gritty mix, fast drainage.",
+        "feeding": "Light feed once or twice in summer.",
+        "tips": "⚠ Toxic milky latex — wear gloves and keep it from eyes, pets and children. It clusters freely into colonies of little corncob columns and throws small greenish-yellow flowers on top."
+      }
+    },
+    {
+      "id": "euphorbia-flanaganii",
+      "latin": "Euphorbia flanaganii",
+      "family": "Euphorbiaceae",
+      "habit": "Caudex",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "winter",
+      "care": {
+        "light": "Very bright light keeps the radiating snake-like branches short and tight around the central caudex; in low light they grow long and floppy.",
+        "water": "Warm-season grower that dislikes a long bone-dry spell — more of a drinker than most euphorbias here. Drench, then water again once the mix dries, roughly every 7–10 days in warm growth. Reduce sharply in winter and keep nearly dry when cool.",
+        "dormancy": "A cool-season slowdown — water less as growth pauses. Fairly forgiving, but a cold, wet caudex will rot.",
+        "soil": "Gritty mix; keep the central caudex sitting at or just above the surface.",
+        "feeding": "Light feed once or twice in summer.",
+        "tips": "⚠ Toxic milky latex — gloves, and keep from pets and children. The ring of tentacle-like arms around a squat caudex gives it the ‘Medusa’s head’ look; it offsets and self-seeds readily."
+      }
+    },
+    {
+      "id": "kalanchoe-tomentosa",
+      "latin": "Kalanchoe tomentosa",
+      "family": "Crassulaceae",
+      "habit": "Succulent shrub",
+      "lightLevel": "medium",
+      "waterLevel": "low",
+      "dormancy": "winter",
+      "care": {
+        "light": "Bright light — but not fierce, direct afternoon sun, which scorches the felted leaves. A bright spot out of harsh rays or a few hours of gentle morning sun brings out the dense silver felt and chocolate-brown leaf-edge markings; in low light it stretches and the colours fade.",
+        "water": "Drench, then let the mix dry out completely, roughly every 10–14 days in warm growth. The fuzzy leaves store water — err on the dry side, and water at the soil to keep the felt clean and dry. Reduce in winter.",
+        "dormancy": "A warm-season grower with only a mild winter slowdown — largely continuous in your steady warmth. Just water less when growth pauses.",
+        "soil": "Gritty mix, sharp drainage.",
+        "feeding": "Light feed monthly during active growth.",
+        "tips": "⚠ Toxic to pets if eaten (like other Kalanchoe). Avoid getting water on the felted leaves — trapped moisture spots and rots them. Easy, slow and very tactile."
+      }
+    },
+    {
+      "id": "crassula-marnieriana",
+      "latin": "Crassula marnieriana",
+      "family": "Crassulaceae",
+      "habit": "Stacked-leaf succulent",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "summer",
+      "care": {
+        "light": "Bright light keeps the tightly stacked, pea-like leaves compact and brings a red blush to the leaf edges; too little light and the stems stretch and space out.",
+        "water": "Cool-season grower. Water autumn–spring while growing — drench, then let the top dry, about weekly. Ease off in summer heat. The plump stacked leaves wrinkle a little when thirsty.",
+        "dormancy": "Slows in high summer — reduce watering and give it a little more shade until cooler weather returns.",
+        "soil": "Gritty mix; sharp drainage keeps the shallow, wiry stems from rotting at the base.",
+        "feeding": "Light feed a couple of times during cool-season growth.",
+        "tips": "Trailing, chain-like stems look best spilling over a pot edge. Easy to propagate — a dropped stem segment roots readily. Starry white-pink flowers appear in the cool months."
+      }
+    },
+    {
+      "id": "aloe-arborescens",
+      "latin": "Aloe arborescens",
+      "family": "Asphodelaceae",
+      "habit": "Succulent shrub",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "none",
+      "care": {
+        "light": "Bright, strong light — the more the better. Good light keeps the rosettes of toothed, gently recurved blue-green leaves compact and can bring warm red tints to the leaf tips.",
+        "water": "Drench, then let the mix dry out, roughly every 7–12 days in warm growth. Tough and drought-hardy — it stores water in the fleshy leaves, so err on the dry side. Reduce in winter, though it takes a little more than most while flowering.",
+        "dormancy": "Largely evergreen — a vigorous grower through the warm months that slows a little in peak summer heat and drought, then throws its tall orange-red torch flowers in late autumn–winter, hence ‘Christmas aloe’. Just water less whenever growth pauses.",
+        "soil": "Gritty mix, sharp drainage; it’s vigorous and not fussy.",
+        "feeding": "Light feed monthly during active growth.",
+        "tips": "⚠ Mildly toxic to pets if eaten (aloin / saponins). In time a big, fast, branching shrub — prune it hard to shape and the cuttings root easily. The nectar-rich winter torch flowers are the reason for the ‘Christmas aloe’ name."
+      }
+    }
+  ]
+}

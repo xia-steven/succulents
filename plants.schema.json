@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://steven-xia.com/plants.schema.json",
+  "title": "Succulent Care collection",
+  "description": "Data contract for plants.json — the per-plant records rendered by index.html. See CLAUDE.md for the meaning of the level and dormancy enums.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["plants"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional pointer to this schema for editor validation."
+    },
+    "plants": {
+      "type": "array",
+      "description": "Every plant in the collection. Must stay in sync with plants.md (one entry per Latin name).",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/plant" }
+    }
+  },
+  "$defs": {
+    "level": {
+      "description": "Relative need bucket. See CLAUDE.md for the exact light/water definitions.",
+      "enum": ["high", "medium", "low"]
+    },
+    "careText": {
+      "description": "One care paragraph. Plain text (no HTML). A leading ⚠ flags a hazard.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "plant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "latin",
+        "family",
+        "habit",
+        "lightLevel",
+        "waterLevel",
+        "dormancy",
+        "care"
+      ],
+      "properties": {
+        "id": {
+          "description": "Stable, arbitrary kebab-case slug. Also the image filename stem (images/<id>.jpg) and the #<id> deep-link hash. Never change an existing id.",
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "latin": {
+          "description": "Academic (Latin) name — the only name shown on the card and detail sheet. The join key to plants.md.",
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "family": {
+          "description": "Botanical family (e.g. Cactaceae). Shown as a chip.",
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "habit": {
+          "description": "Growth habit (e.g. Caudex, Cactus). Shown as a chip.",
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "lightLevel": { "$ref": "#/$defs/level" },
+        "waterLevel": { "$ref": "#/$defs/level" },
+        "dormancy": {
+          "description": "When the plant rests. Drives the Dormancy filter and the corner tag: summer=Summer dormant, winter=Winter dormant, none=Evergreen.",
+          "enum": ["summer", "winter", "none"]
+        },
+        "care": {
+          "description": "The detail-sheet copy. All six sections are required and rendered in this order.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["light", "water", "dormancy", "soil", "feeding", "tips"],
+          "properties": {
+            "light": { "$ref": "#/$defs/careText" },
+            "water": { "$ref": "#/$defs/careText" },
+            "dormancy": { "$ref": "#/$defs/careText" },
+            "soil": { "$ref": "#/$defs/careText" },
+            "feeding": { "$ref": "#/$defs/careText" },
+            "tips": { "$ref": "#/$defs/careText" }
+          }
+        }
+      }
+    }
+  }
+}
