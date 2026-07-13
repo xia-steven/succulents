@@ -9,6 +9,7 @@ Canonical list of every plant in the collection, by academic (Latin) name. This 
 - Aloinopsis setifera
 - Anacampseros arachnoides
 - Astrophytum asterias ‘Onzuka’
+- Coryphantha elephantidens cv. ‘Inermis’
 - Crassula marnieriana
 - Crassula umbella
 - Dorstenia foetida

@@ -493,6 +493,23 @@
         "feeding": "Light feed monthly during active growth.",
         "tips": "⚠ Mildly toxic to pets if eaten (aloin / saponins). In time a big, fast, branching shrub — prune it hard to shape and the cuttings root easily. The nectar-rich winter torch flowers are the reason for the ‘Christmas aloe’ name."
       }
+    },
+    {
+      "id": "coryphantha-elephantidens-inermis",
+      "latin": "Coryphantha elephantidens cv. ‘Inermis’",
+      "family": "Cactaceae",
+      "habit": "Cactus",
+      "lightLevel": "high",
+      "waterLevel": "medium",
+      "dormancy": "winter",
+      "care": {
+        "light": "Full, strong light and a long photoperiod for a firm, flat-topped body and good flowering. But acclimate the spineless ‘Inermis’ to intense LEDs gradually — with no spines to shade the skin, it can scorch if suddenly blasted.",
+        "water": "Warm-season grower. Drench deeply, then let the mix dry out completely before the next, roughly every 2–3 weeks spring–autumn. Keep dry through winter.",
+        "dormancy": "A cool, dry winter rest — cut water and let it slow. Coryphantha need that dryish rest to set their big flowers, and a shorter winter photoperiod helps cue it.",
+        "soil": "Gritty mix — perfect for cactus roots; sharp drainage guards the fat body against rot.",
+        "feeding": "Low-nitrogen cactus feed once or twice in summer.",
+        "tips": "‘Inermis’ is a smooth, spineless selection — the sculptural, soft-to-the-touch ‘elephant-tooth’ tubercles are the whole appeal. Mature plants throw large, sweet-scented pink flowers from the crown and sucker into clumps over time. No spines means keeping an eye out for scorch and for mealybugs tucked into the tubercle axils."
+      }
     }
   ]
 }
